@@ -94,6 +94,7 @@ void VirtualMemoryManager::swapPageIn(int virtAddr)
                 temp->physicalPage = currPageEntry->physicalPage;
                 // currPageEntry->physicalPage = memoryManager->getPage();
                 victimPage->valid = FALSE;
+                victimPage->use = FALSE;
             }
         }
     }
