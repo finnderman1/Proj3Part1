@@ -53,7 +53,7 @@ void VirtualMemoryManager::writeToSwap(char *page, int pageSize,
 void VirtualMemoryManager::swapPageIn(int virtAddr)
 {
     TranslationEntry* currPageEntry;
-    printf("NumPhysPages: %i", NumPhysPages);
+    printf("NumPhysPages: %i NextVictim %i\n", NumPhysPages, nextVictim);
     if(nextVictim>= NumPhysPages) {//no more space available
             fprintf(stderr, "Fatal error: No more space available\n");
             exit(1);
