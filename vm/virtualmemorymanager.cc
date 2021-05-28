@@ -78,8 +78,6 @@ void VirtualMemoryManager::swapPageIn(int virtAddr)
                 nextVictim = (nextVictim+1) % NumPhysPages;
             }
             else{
-                printf("NumPhysPages: %i NextVictim %i\n", NumPhysPages, nextVictim);
-
                 cont = false;
                 if(victimPage->dirty == TRUE)
                 {
@@ -88,6 +86,7 @@ void VirtualMemoryManager::swapPageIn(int virtAddr)
                     writeToSwap(memAdd, PageSize, sect);
                     victimPage->valid = FALSE;
                 }
+                printf("NumPhysPages: %i NextVictim %i\n", NumPhysPages, nextVictim);
                 physPageInfo->space = currentThread->space;
                 physPageInfo->pageTableIndex = virtAddr / PageSize;
                 // currPageEntry = getPageTableEntry(physPageInfo);
