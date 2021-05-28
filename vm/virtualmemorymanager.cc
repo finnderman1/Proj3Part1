@@ -76,10 +76,10 @@ void VirtualMemoryManager::swapPageIn(int virtAddr)
             {
                 victimPage->use = FALSE;
                 nextVictim = (nextVictim+1) % NumPhysPages;
-                printf("NumPhysPages: %i NextVictim %i\n", NumPhysPages, nextVictim);
-
             }
             else{
+                printf("NumPhysPages: %i NextVictim %i\n", NumPhysPages, nextVictim);
+
                 cont = false;
                 if(victimPage->dirty == TRUE)
                 {
