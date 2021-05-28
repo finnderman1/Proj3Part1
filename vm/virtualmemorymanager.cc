@@ -82,7 +82,7 @@ void VirtualMemoryManager::swapPageIn(int virtAddr)
                 cont = false;
                 if(victimPage->dirty == TRUE)
                 {
-                    int sect = physPageInfo->space->locationOnDisk[victimPage->virtualPage];
+                    int sect = victimPage->locationOnDisk;
                     char* memAdd = machine->mainMemory + victimPage->physicalPage * PageSize;
                     writeToSwap(memAdd, PageSize, sect);
                     victimPage->valid = FALSE;
