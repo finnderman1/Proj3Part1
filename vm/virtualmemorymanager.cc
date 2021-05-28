@@ -89,8 +89,10 @@ void VirtualMemoryManager::swapPageIn(int virtAddr)
                 }
                 physPageInfo->space = currentThread->space;
                 physPageInfo->pageTableIndex = virtAddr / PageSize;
-                currPageEntry = getPageTableEntry(physPageInfo);
-                currPageEntry->physicalPage = memoryManager->getPage();
+                // currPageEntry = getPageTableEntry(physPageInfo);
+                TranslationEntry *temp = getPageTableEntry(physPageInfo);
+                temp->physicalPage = currPageEntry->physicalPage;
+                // currPageEntry->physicalPage = memoryManager->getPage();
                 victimPage->valid = FALSE;
             }
         }
