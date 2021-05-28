@@ -61,10 +61,10 @@ void VirtualMemoryManager::swapPageIn(int virtAddr)
     bool cont = true;
     while(cont)
     { 
-        printf("NumPhysPages: %i NextVictim %i\n", NumPhysPages, nextVictim);
         FrameInfo * physPageInfo = physicalMemoryInfo + nextVictim;
         if(physPageInfo->space == NULL)
         {
+            printf("NumPhysPages: %i NextVictim %i\n", NumPhysPages, nextVictim);
             physPageInfo->space = currentThread->space;
             physPageInfo->pageTableIndex = virtAddr / PageSize;
             currPageEntry = getPageTableEntry(physPageInfo);
