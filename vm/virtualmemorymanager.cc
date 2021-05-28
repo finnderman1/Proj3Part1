@@ -60,7 +60,6 @@ void VirtualMemoryManager::swapPageIn(int virtAddr)
     }
     bool cont = true;
     while(cont)
-
     {
         FrameInfo * physPageInfo = physicalMemoryInfo + nextVictim;
         if(physPageInfo->space == NULL)
@@ -98,7 +97,7 @@ void VirtualMemoryManager::swapPageIn(int virtAddr)
     //We assume this page is not occupied by any process space
     
     loadPageToCurrVictim(virtAddr);
-    nextVictim = nextVictim + 1;
+    nextVictim = (nextVictim + 1)%NumPhysPages;
 }
 
 
